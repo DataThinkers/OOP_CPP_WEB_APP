@@ -1,0 +1,958 @@
+import streamlit as st
+
+st.set_page_config(layout="wide")
+st.title("📘 C++ OOP Interactive Question Bank")
+
+qa = {
+
+"Q1. Define Object Oriented Programming (OOP). Explain its main features with example.": """
+Definition
+
+Object Oriented Programming (OOP) is a programming paradigm in which programs are designed using objects instead of functions and procedures.
+
+An object represents a real-world entity and contains:
+
+- Data (variables)
+
+- Functions (methods)
+
+OOP helps in organizing complex programs in a structured and secure way.
+
+**Example of real-world modeling:**
+
+A Student has:
+
+Data → Roll number, Name
+
+Behaviour → Display details
+
+In C++:
+```cpp
+class Student {
+
+   int roll;
+    
+   public:
+
+   void display(){
+
+      cout<<"Student Details";
+
+   }
+
+};
+```
+Main Features of OOP
+
+**1. Encapsulation**
+
+Encapsulation means wrapping data and functions into a single unit called a class.
+
+It protects data from direct access by making it private.
+
+Example:
+```cpp
+class Account {
+
+   private:
+
+      int balance;
+
+   public:
+
+      void setBalance(int b){
+
+         balance = b;
+
+      }
+
+};
+```
+Here, balance cannot be accessed directly from outside the class.
+
+This improves data security.
+
+**2. Abstraction**
+
+Abstraction means hiding internal implementation details and showing only essential features.
+
+Example:
+
+When we call:
+
+obj.display();
+
+we don’t know how the function works internally.
+
+Example:
+```cpp
+class Car {
+
+public:
+
+   void start(){
+
+      cout<<"Car Started";
+
+   }
+
+};
+```
+User only calls start() without knowing engine logic.
+
+**3. Inheritance**
+
+Inheritance allows one class to acquire properties and behaviour of another class.
+
+It supports code reusability.
+
+Example:
+```cpp
+class Animal {
+
+public:
+
+   void eat(){
+
+      cout<<"Eating";
+
+   }
+
+};
+
+class Dog : public Animal {
+
+};
+```
+Here, Dog can use eat() function.
+
+**4. Polymorphism**
+
+Polymorphism means one function behaving differently in different situations.
+
+Example:
+```cpp
+int add(int a,int b){
+
+   return a+b;
+
+}
+
+float add(float a,float b){
+
+   return a+b;
+
+}
+```
+Same function name → Different behavior.
+
+**Main Features of OOP**
+
+| Feature        | Description                                      |
+|---------------|--------------------------------------------------|
+| Encapsulation | Wrapping data and functions into a single unit   |
+| Abstraction   | Hiding internal implementation details           |
+| Inheritance   | One class acquiring properties of another class  |
+| Polymorphism  | One function behaving differently in situations  |
+
+
+**Conclusion**
+
+**OOP provides:**
+
+- Better security
+
+- Code reusability
+
+- Easy maintenance
+
+- Real-world problem solving
+
+It makes programming structured and efficient.
+""",
+
+"Q2. Differentiate between Procedural Programming and Object Oriented Programming with example.": """
+Programming languages are broadly classified into:
+
+Difference Between POP and OOP
+
+| Procedural Programming (POP) | Object Oriented Programming (OOP) |
+|------------------------------|-----------------------------------|
+| Focuses on functions         | Focuses on objects                |
+| Uses Top-Down approach       | Uses Bottom-Up approach           |
+| Data is globally shared      | Data is hidden                    |
+| No concept of inheritance    | Supports inheritance              |
+| Less secure                  | More secure                       |
+| Difficult to modify large programs | Easy to maintain           |
+| Example: C                   | Example: C++                      |
+
+Example
+
+Procedural Programming Example (C-style)
+```cpp
+int add(int a, int b){
+
+   return a+b;
+
+}
+
+int main(){
+
+   int result = add(5,3);
+
+   cout<<result;
+
+}
+```
+Here, program is divided into functions.
+
+**Object Oriented Programming Example**
+```cpp
+class Calculator {
+
+public:
+
+   int add(int a, int b){
+
+      return a+b;
+
+   }
+
+};
+
+int main(){
+
+   Calculator obj;
+
+   cout<<obj.add(5,3);
+
+}
+```
+Here, program is organized using class and object.
+
+**Conclusion**
+
+- Procedural Programming is suitable for small programs.
+
+- Object Oriented Programming is suitable for large and complex programs because it provides:
+
+- Security
+
+- Reusability
+
+- Maintainability
+""",
+
+"Q3. Explain Encapsulation and Abstraction with example.": """
+Encapsulation and Abstraction are two important features of Object Oriented Programming that help in making programs secure and easy to manage.
+
+**Encapsulation**
+
+Encapsulation means wrapping data and functions together into a single unit called a class.
+
+It also protects data by restricting direct access from outside the class.
+
+Data is kept private and accessed using public functions.
+
+**Example of Encapsulation**
+```cpp
+class Account {
+
+private:
+
+   int balance;
+
+public:
+
+   void setBalance(int b){
+
+      balance = b;
+
+   }
+
+   void showBalance(){
+
+      cout << balance;
+
+   }
+
+};
+```
+Here:
+
+balance is private → cannot be accessed directly
+
+It can only be accessed using setBalance() and showBalance()
+
+This protects data from misuse.
+
+**Abstraction**
+
+Abstraction means hiding internal working details and showing only necessary features to the user.
+
+User only interacts with what is required.
+
+**Example of Abstraction**
+```cpp
+class Car {
+
+public:
+
+   void start(){
+
+      cout << "Car Started";
+
+   }
+
+};
+```
+**User only calls:**
+
+obj.start();
+
+User does not know how engine works internally.
+
+Complexity is hidden.
+
+- Encapsulation protects data,
+
+- Abstraction simplifies usage.
+
+**Encapsulation vs Abstraction**
+
+| Encapsulation        | Abstraction         |
+|----------------------|---------------------|
+| Hides data           | Hides implementation|
+| Uses access specifiers | Uses functions    |
+| Focus on security    | Focus on simplicity |
+
+""",
+
+"Q4. What is Namespace? Explain its need with example.": """
+A namespace in C++ is used to organize code and avoid naming conflicts.
+
+In large programs, different libraries or parts of code may use the same variable or function name. Namespace helps prevent confusion by grouping identifiers under a unique name.
+
+**Example Without Namespace**
+```cpp
+int display(){
+
+   return 1;
+
+}
+
+int display(){
+
+   return 2;
+
+}
+```
+This creates an error because names are same.
+
+**Example With Namespace**
+```cpp
+namespace A {
+
+   int display(){
+
+      return 1;
+
+   }
+
+}
+
+namespace B {
+
+   int display(){
+
+      return 2;
+
+   }
+
+}
+
+int main(){
+
+   cout << A::display();
+
+   cout << B::display();
+
+}
+```
+**Namespace helps in:**
+
+- Avoiding name conflicts
+
+- Organizing large programs
+
+- Improving code readability
+""",
+
+"Q5 . Define Class and Object with example.": """
+**Definition of Class**
+
+A class is a user-defined data type that acts as a blueprint for creating objects.
+
+It contains:
+
+- Data members (variables)
+
+- Member functions (functions)
+
+Class does not occupy memory.
+
+**Definition of Object**
+
+An object is an instance of a class.
+
+It represents a real-world entity and occupies memory.
+
+Objects are used to access class members.
+```cpp
+class Car {
+
+public:
+
+   int speed;
+
+   void show(){
+
+      cout << "Speed = " << speed;
+
+   }
+
+};
+```
+**Creating Object**
+```cpp
+int main(){
+
+   Car c1;
+
+   c1.speed = 80;
+
+   c1.show();
+
+}
+```
+**Conclusion**
+
+- Class defines structure.
+
+- Object brings it to real use.
+""",
+
+"Q6. Explain Access Specifiers in C++ with example.": """
+Access specifiers control the visibility and accessibility of class members.
+
+There are three types:
+
+1. Private
+
+2. Public
+
+3. Protected
+
+**1. Private**
+
+- Accessible only inside the class
+
+- Cannot be accessed from outside
+
+- Used for data security.
+
+**2. Public**
+
+- Accessible anywhere in the program
+
+- Used to provide access to private data
+
+**3. Protected**
+
+- Accessible inside class
+
+- Accessible in derived class
+
+- Not accessible from main()
+
+- Used in inheritance.
+```cpp
+class A {
+
+private:
+
+   int x;
+
+public:
+
+   int y;
+
+protected:
+
+   int z;
+
+};
+```
+
+**Access Specifiers control the visibility and accessibility of class members.**
+
+| Access Specifier | Accessibility                          | Purpose              |
+|------------------|----------------------------------------|----------------------|
+| Private          | Accessible only inside the class       | Data security        |
+| Public           | Accessible anywhere in the program     | Provide access       |
+| Protected        | Accessible in class & derived class    | Used in inheritance  |
+
+Access specifiers help in:
+
+- Data protection
+
+- Controlled access
+
+- Secure programming
+""",
+
+"Q7. What is a Constructor? Explain its types with example.": """
+
+**Definition:**
+
+A constructor is a special member function of a class used to initialize objects.
+
+It has the same name as the class and is automatically called when an object is created.
+
+**Constructor has:**
+
+- No return type
+
+- Same name as class
+
+Types of Constructors
+
+**1. Default Constructor**
+
+It takes no arguments.
+
+Example:
+
+```cpp
+class A {
+
+public:
+
+   A(){
+
+      cout << "Default Constructor";
+
+   }
+
+};
+
+```
+**2. Parameterized Constructor**
+
+It takes arguments to initialize values.
+
+Example:
+
+```cpp
+class A {
+
+public:
+
+   int x;
+
+   A(int a){
+
+      x = a;
+
+   }
+
+};
+```
+
+**3. Copy Constructor**
+
+It copies values from one object to another.
+
+Example:
+
+```cpp
+class A {
+
+public:
+
+   int x;
+
+   A(int a){
+
+      x = a;
+
+   }
+
+   A(A &obj){
+
+      x = obj.x;
+
+   }
+
+};
+```
+**Constructors are used to:**
+
+- Initialize objects
+
+- Save coding time
+
+- Improve efficiency
+""",
+
+"Q8. What is a Destructor? Explain with example.": """
+
+**Definition**
+
+A destructor is a special member function used to destroy an object and release resources when the object goes out of scope.
+
+It has:
+
+- Same name as the class
+
+- Prefixed with a tilde (~)
+
+- No return type
+
+- No arguments
+
+**Destructor is used to:**
+
+- Free memory
+
+- Close files
+
+- Release resources
+
+**Example**
+
+```cpp
+class A {
+
+public:
+
+   ~A(){
+
+      cout << "Object Destroyed";
+
+   }
+
+};
+
+int main(){
+
+   A obj;
+
+}
+```
+**Constructor → Creates object**
+
+**Destructor → Destroys object**
+""",
+
+"Q9. Explain Static Data Members and Static Member Functions with example.": """
+
+**Static Data Member**
+
+- A static data member is shared by all objects of a class.
+
+- Only one copy exists, no matter how many objects are created.
+
+Example
+
+**Static Data Member**
+
+```cpp
+class A {
+
+public:
+
+   static int count;
+
+};
+
+int A::count = 0;
+
+int main(){
+
+   A obj1, obj2;
+
+   obj1.count++;
+
+   obj2.count++;
+
+   cout << A::count;
+
+}
+```
+
+**Static Member Function**
+
+- A static member function can access only static data members.
+
+
+```cpp
+**Static Member Function**
+
+```cpp
+class A {
+
+public:
+
+   static int x;
+
+   static void show(){
+
+      cout << x;
+
+   }
+
+};
+
+int A::x = 10;
+
+int main(){
+
+   A::show();
+
+}
+```
+
+**Static members help in:**
+
+- Memory saving
+
+- Sharing data among objects
+""",
+
+"Q10. Explain Dynamic Memory Allocation in C++ with example.": """
+Dynamic Memory Allocation means allocating memory during runtime instead of compile time.
+
+In C++, it is done using:
+
+new → to allocate memory
+
+delete → to free memory
+
+Example
+```cpp
+int *p;
+
+p = new int;
+
+*p = 10;
+
+delete p;
+```
+**Advantages**
+
+- Memory used only when needed
+
+- Efficient use of storage
+""",
+
+"Q11. Explain Reference Variable in C++ with example.": """
+
+A reference variable is an alias (another name) for an existing variable.
+```cpp
+int a = 5;
+
+int &b = a;
+
+b = 10;
+```
+
+Changing b also changes a.
+
+Used in Call by Reference.
+""",
+
+"Q12. Explain Function Overloading with example.": """
+
+Function Overloading means defining multiple functions with the same name but with different parameters.
+```cpp
+int add(int a,int b){
+
+   return a+b;
+
+}
+
+float add(float a,float b){
+
+   return a+b;
+
+}
+```
+Compiler automatically selects correct function.
+
+It supports Compile-Time Polymorphism.
+""",
+
+"Q13. Explain Inline Function.": """
+
+**DEFINITION**
+
+Inline function is a function defined using the `inline` keyword.
+
+The compiler replaces the function call with the actual function body during compilation.
+
+This avoids function call overhead and improves execution speed for small functions.
+
+---
+
+**SYNTAX**
+
+```cpp
+inline return_type function_name(parameters){
+
+   // function body
+
+}
+```
+
+```cpp
+#include<iostream>
+using namespace std;
+
+inline int square(int x){
+
+   return x*x;
+
+}
+
+int main(){
+
+   cout << square(5);
+
+}
+
+```
+It improves speed for small functions.
+""",
+
+"Q14. Differentiate between Macro and Inline Function.": """
+Macro
+
+Macro vs Inline Function
+
+| Macro                     | Inline Function        |
+|---------------------------|------------------------|
+| Uses #define              | Uses inline            |
+| Preprocessor handles      | Compiler handles       |
+| No type checking          | Type safe              |
+| Text replacement          | Function replacement   |
+| No concept of scope       | Follows function scope |
+
+Example
+
+**Macro**
+
+```cpp
+#define SQR(x) x*x
+
+int main(){
+
+   int a = 5;
+
+   cout << SQR(a);
+
+}
+```
+**Inline Function**
+
+```cpp
+inline int sqr(int x){
+
+   return x*x;
+
+}
+
+int main(){
+
+   cout << sqr(5);
+
+}
+
+```
+""",
+
+"Q15 Explain Friend Function.": """
+**DEFINITION**
+
+A friend function is a non-member function that is allowed to access the private and protected members of a class.
+
+Normally, private data cannot be accessed outside the class, but a friend function can access it.
+
+---
+
+**SYNTAX**
+
+Friend function is declared inside the class using the keyword `friend`.
+
+```cpp
+class ClassName {
+
+   friend return_type function_name(parameters);
+
+};
+```
+
+```cpp
+#include<iostream>
+using namespace std;
+
+class A {
+
+   private:
+      int x = 5;
+
+   public:
+      friend void show(A obj);
+
+};
+
+void show(A obj){
+
+   cout << obj.x;
+
+}
+
+int main(){
+
+   A obj;
+
+   show(obj);
+
+}
+```
+
+"""
+}
+
+
+left, right = st.columns([1,2])
+
+if "selected" not in st.session_state:
+    st.session_state.selected = None
+
+with left:
+    st.subheader("Questions")
+    for q in qa:
+        if st.button(q):
+            st.session_state.selected = q
+
+with right:
+    st.subheader("Answer")
+    if st.session_state.selected:
+        st.write(f"### {st.session_state.selected}")
+        st.markdown(qa[st.session_state.selected])
+    else:
+        st.info("Click any question to view the answer.")
+st.markdown("---")
+st.markdown("<p style='text-align:center'><b>App Created by Dr. Priyang Bhatt</b></p>", unsafe_allow_html=True)
+
