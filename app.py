@@ -1,6 +1,10 @@
 import streamlit as st
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    page_title="C++ OOP Question Bank",
+    page_icon="📘",
+    layout="wide"
+)
 st.markdown("""
 <style>
           
@@ -1317,5 +1321,6 @@ with right:
 
 st.markdown("---")
 st.markdown("<p style='text-align:center'><b>App Created by Dr. Priyang Bhatt</b></p>", unsafe_allow_html=True)
+
 
 
