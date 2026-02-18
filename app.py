@@ -1,6 +1,76 @@
 import streamlit as st
 
 st.set_page_config(layout="wide")
+st.markdown("""
+<style>
+          
+body {
+    background-color: #f5f7fa;
+}
+
+h1 {
+    color: #1f4e79;
+    text-align: center;
+}
+
+div[data-testid="stButton"] > button {
+    width: 100%;
+    background-color: #e8f0fe;
+    border-radius: 10px;
+    border: none;
+    color: #1f4e79;
+    font-weight: bold;
+}
+
+div[data-testid="stButton"] > button:hover {
+    background-color: #d2e3fc;
+    color: #0b3d91;
+}
+
+section[data-testid="stSidebar"] {
+    background-color: #f1f3f6;
+}
+
+.answer-box {
+    border: 1px solid #d0d7e2;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+
+
+button[data-testid="baseButton-secondary"] {
+    background-color: #e8f0fe;
+    border-radius: 10px;
+}
+
+button[data-testid="baseButton-secondary"][aria-pressed="true"] {
+    background-color: #d2e3fc !important;
+    color: #0b3d91 !important;
+    font-weight: bold;
+}
+.answer-box {
+    background-color: #f9fbff;
+    border-left: 5px solid #4a90e2;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.info-box {
+    background-color: #fff8e1;
+    border-left: 5px solid #f4b400;
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: #5f4b00;
+}
+
+
+</style>
+""", unsafe_allow_html=True)
+
 st.title("📘 C++ OOP Quick Revision")
 
 qa = {
@@ -1231,17 +1301,20 @@ if "selected" not in st.session_state:
 
 with left:
     st.subheader("Questions")
+
     for q in qa:
-        if st.button(q):
+        if st.button(q, key=q):
             st.session_state.selected = q
 
 with right:
     st.subheader("Answer")
     if st.session_state.selected:
         st.write(f"### {st.session_state.selected}")
-        st.markdown(qa[st.session_state.selected])
+        st.markdown(f"<div class='answer-box'>{qa[st.session_state.selected]}</div>", unsafe_allow_html=True)
+
     else:
-        st.info("Click any question to view the answer.")
+        st.markdown("<div class='info-box'>Click any question to view the answer.</div>", unsafe_allow_html=True)
+
+
 st.markdown("---")
 st.markdown("<p style='text-align:center'><b>App Created by Dr. Priyang Bhatt</b></p>", unsafe_allow_html=True)
-
