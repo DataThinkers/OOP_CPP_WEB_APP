@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(layout="wide")
-st.title("📘 C++ OOP Interactive Question Bank")
+st.title("📘 C++ OOP Quick Revision")
 
 qa = {
 
@@ -1099,4 +1099,5 @@ with right:
         st.info("Click any question to view the answer.")
 st.markdown("---")
 st.markdown("<p style='text-align:center'><b>App Created by Dr. Priyang Bhatt</b></p>", unsafe_allow_html=True)
+
 
