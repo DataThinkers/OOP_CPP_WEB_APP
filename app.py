@@ -527,9 +527,10 @@ int main(){
 """,
 
 "Q6. Explain Access Specifiers in C++ with example.": """
+
 Access specifiers control the visibility and accessibility of class members.
 
-There are three types:
+**There are three types:**
 
 1. Private
 
@@ -811,6 +812,7 @@ int main(){
 - Sharing data among objects """,
 
 "Q10. Explain Dynamic Memory Allocation in C++ with example.": """
+
 Dynamic Memory Allocation means allocating memory during runtime instead of compile time.
 
 In C++, dynamically allocated memory is created in heap memory, while normal variables and objects are created in stack memory.
@@ -1321,6 +1323,7 @@ with right:
 
 st.markdown("---")
 st.markdown("<p style='text-align:center'><b>App Created by Dr. Priyang Bhatt</b></p>", unsafe_allow_html=True)
+
 
 
 
