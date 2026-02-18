@@ -172,9 +172,18 @@ It makes programming structured and efficient.
 """,
 
 "Q2. Differentiate between Procedural Programming and Object Oriented Programming with example.": """
+
 Programming languages are broadly classified into:
 
-Difference Between POP and OOP
+- Procedural Programming (POP)
+
+  Procedural Programming focuses on functions and follows a step-by-step method to solve a problem.
+
+- Object Oriented Programming (OOP)
+   
+ Object Oriented Programming focuses on objects that combine data and functions together.
+
+**Difference Between POP and OOP**
 
 | Procedural Programming (POP) | Object Oriented Programming (OOP) |
 |------------------------------|-----------------------------------|
@@ -695,8 +704,6 @@ int main(){
 
 - A static member function can access only static data members.
 
-
-```cpp
 **Static Member Function**
 
 ```cpp
@@ -733,64 +740,202 @@ int main(){
 "Q10. Explain Dynamic Memory Allocation in C++ with example.": """
 Dynamic Memory Allocation means allocating memory during runtime instead of compile time.
 
-In C++, it is done using:
+In C++, dynamically allocated memory is created in heap memory, while normal variables and objects are created in stack memory.
 
-new → to allocate memory
+**In C++, it is done using:**
 
-delete → to free memory
+- new → to allocate memory
 
-Example
+- delete → to free memory
+
+**Stack vs Heap**
+
+**Stack Memory**
+
+- Used for normal variables and objects
+
+- Automatically created and destroyed
+
+- No need to delete manually
+**Example:**
+
+- Demo obj;   // stored in stack
+
+**This object is automatically removed when it goes out of scope.**
+
+**Heap Memory**
+
+- Used for dynamic allocation
+
+- Created using new
+
+- Must be removed using delete
+
+**Operators Used**
+
+- new → Allocates memory from heap
+
+- delete → Releases memory back to heap
+
+**Example (Normal Object - Stack)**
+
+- Demo obj;   // stored in stack
+
+**No need to delete — it is automatically destroyed.**
+
+**Example (Dynamic Object - Heap)**
+
 ```cpp
-int *p;
+#include <iostream>
+using namespace std;
 
-p = new int;
+class Demo {
+public:
+    void show() {
+        cout << "Dynamic Object" << endl;
+    }
+};
 
-*p = 10;
+int main() {
 
-delete p;
+    Demo *obj;
+    obj = new Demo();   // stored in heap
+
+    obj->show();
+
+    delete obj;         // must delete manually
+
+    return 0;
+}
+
 ```
-**Advantages**
+**Explanation**
 
-- Memory used only when needed
+- Stack objects are automatically removed
 
-- Efficient use of storage
+- Heap objects remain until explicitly deleted
+
+- If delete is not used → memory leak occurs
+
+**Key Idea**
+
+- Normal objects in stack are removed automatically,
+- But dynamically created objects in heap must be deleted manually.
+
+**In short, dynamic memory allocation uses heap memory and requires manual deletion, unlike stack memory which is managed automatically.**
 """,
 
 "Q11. Explain Reference Variable in C++ with example.": """
 
-A reference variable is an alias (another name) for an existing variable.
+- A reference variable is an alias (another name) for an existing variable.
+
+- It does not store a separate value. it simply refers to an already existing variable.
+
+- Both the reference and the original variable share the same memory location.
+
+**Syntax**
+
+- datatype &reference_name = original_variable;
+
+**Example**
 ```cpp
-int a = 5;
 
-int &b = a;
+#include <iostream>
+using namespace std;
 
-b = 10;
+int main() {
+
+    int x = 10;
+    int &y = x;   // y is reference to x
+
+    cout << "x = " << x << endl;
+    cout << "y = " << y << endl;
+
+    y = 20;   // changing reference
+
+    cout << "x = " << x << endl;
+    cout << "y = " << y << endl;
+
+    return 0;
+}
 ```
+**Output**
+```cpp
+x = 10
+y = 10
+x = 20
+y = 20
+```
+**Explanation**
 
-Changing b also changes a.
+- Here, y is a reference to x.
 
-Used in Call by Reference.
+- So when y is changed, x is also updated because both refer to the same memory location.
+
+**Key Points**
+
+- A reference must be initialized when declared.
+
+- It cannot refer to another variable later.
+
+- It does not occupy separate memory.
 """,
 
 "Q12. Explain Function Overloading with example.": """
 
-Function Overloading means defining multiple functions with the same name but with different parameters.
+Function overloading means using the same function name to perform different tasks by changing the parameter list.
+
+Multiple functions can have the same name if their parameters are different.
+
+**Example**
+
 ```cpp
-int add(int a,int b){
+#include <iostream>
+using namespace std;
 
-   return a+b;
+class Demo {
+public:
 
-}
+    int add(int a, int b) {
+        return a + b;
+    }
 
-float add(float a,float b){
+    float add(float a, float b) {
+        return a + b;
+    }
 
-   return a+b;
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+};
 
+int main() {
+    Demo obj;
+
+    cout << obj.add(2,3) << endl;        // calls int version
+    cout << obj.add(2.5f,3.5f) << endl;  // calls float version
+    cout << obj.add(1,2,3) << endl;      // calls 3-parameter version
 }
 ```
-Compiler automatically selects correct function.
+**Output**
+```cpp
+5
+6
+6
+```
+**Explanation**
 
-It supports Compile-Time Polymorphism.
+**All functions have the same name add, but differ in:**
+
+- Number of parameters
+
+- Type of parameters
+
+- The compiler selects the correct function based on the arguments passed.
+
+**This is called compile-time polymorphism.**
+
+**Note:** Return type may differ in overloaded functions, but it is not considered for function overloading — the parameter list must be different.
 """,
 
 "Q13. Explain Inline Function.": """
@@ -836,9 +981,8 @@ It improves speed for small functions.
 """,
 
 "Q14. Differentiate between Macro and Inline Function.": """
-Macro
 
-Macro vs Inline Function
+**Macro vs Inline Function**
 
 | Macro                     | Inline Function        |
 |---------------------------|------------------------|
@@ -848,9 +992,9 @@ Macro vs Inline Function
 | Text replacement          | Function replacement   |
 | No concept of scope       | Follows function scope |
 
-Example
+**Example**
 
-**Macro**
+**1. Macro**
 
 ```cpp
 #define SQR(x) x*x
@@ -863,7 +1007,7 @@ int main(){
 
 }
 ```
-**Inline Function**
+**2. Inline Function**
 
 ```cpp
 inline int sqr(int x){
