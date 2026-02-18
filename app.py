@@ -468,6 +468,7 @@ int main(){
 """,
 
 "Q5 . Define Class and Object with example.": """
+
 **Definition of Class**
 
 A class is a user-defined data type that acts as a blueprint for creating objects.
@@ -1318,3 +1319,4 @@ with right:
 
 st.markdown("---")
 st.markdown("<p style='text-align:center'><b>App Created by Dr. Priyang Bhatt</b></p>", unsafe_allow_html=True)
+
