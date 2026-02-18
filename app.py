@@ -1101,6 +1101,7 @@ int main(){
 """,
 
 "Q15 Explain Friend Function.": """
+
 **DEFINITION**
 
 A friend function is a non-member function that is allowed to access the private and protected members of a class.
@@ -1198,9 +1199,9 @@ int main() {
 
 "Q17. Explain the Program Structure of C++.": """
 
-- A C++ program is organized into different sections to make the program easy to understand and manage.
+A C++ program is organized into different sections to make the program easy to understand and manage.
 
-- The basic structure of a C++ program includes the following parts:
+**The basic structure of a C++ program includes the following parts:**
 
 **1. Documentation Section**
 
@@ -1323,6 +1324,7 @@ with right:
 
 st.markdown("---")
 st.markdown("<p style='text-align:center'><b>App Created by Dr. Priyang Bhatt</b></p>", unsafe_allow_html=True)
+
 
 
 
