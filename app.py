@@ -80,7 +80,8 @@ st.title("📘 C++ OOP Quick Revision")
 qa = {
 
 "Q1. Define Object Oriented Programming (OOP). Explain its main features with example.": """
-Definition
+
+**Definition**
 
 Object Oriented Programming (OOP) is a programming paradigm in which programs are designed using objects instead of functions and procedures.
 
@@ -327,6 +328,7 @@ Here, program is organized using class and object.
 """,
 
 "Q3. Explain Encapsulation and Abstraction with example.": """
+
 Encapsulation and Abstraction are two important features of Object Oriented Programming that help in making programs secure and easy to manage.
 
 **Encapsulation**
@@ -338,6 +340,7 @@ It also protects data by restricting direct access from outside the class.
 Data is kept private and accessed using public functions.
 
 **Example of Encapsulation**
+
 ```cpp
 class Account {
 
@@ -412,11 +415,13 @@ Complexity is hidden.
 """,
 
 "Q4. What is Namespace? Explain its need with example.": """
+
 A namespace in C++ is used to organize code and avoid naming conflicts.
 
 In large programs, different libraries or parts of code may use the same variable or function name. Namespace helps prevent confusion by grouping identifiers under a unique name.
 
 **Example Without Namespace**
+
 ```cpp
 int display(){
 
@@ -433,6 +438,7 @@ int display(){
 This creates an error because names are same.
 
 **Example With Namespace**
+
 ```cpp
 namespace A {
 
@@ -688,6 +694,7 @@ public:
 - Save coding time
 
 - Improve efficiency
+
 """,
 
 "Q8. What is a Destructor? Explain with example.": """
@@ -809,7 +816,9 @@ int main(){
 
 - Memory saving
 
-- Sharing data among objects """,
+- Sharing data among objects 
+
+""",
 
 "Q10. Explain Dynamic Memory Allocation in C++ with example.": """
 
@@ -832,6 +841,7 @@ In C++, dynamically allocated memory is created in heap memory, while normal var
 - Automatically created and destroyed
 
 - No need to delete manually
+
 **Example:**
 
 - Demo obj;   // stored in stack
@@ -1324,6 +1334,7 @@ with right:
 
 st.markdown("---")
 st.markdown("<p style='text-align:center'><b>App Created by Dr. Priyang Bhatt</b></p>", unsafe_allow_html=True)
+
 
 
 
