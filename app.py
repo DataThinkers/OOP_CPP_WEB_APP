@@ -1074,8 +1074,153 @@ int main(){
 
 }
 ```
+""",
+"Q16. What is Array of Objects? Explain with example.":"""
+
+- An array of objects is a collection of objects of the same class stored together.
+
+- Instead of creating separate objects, we can create multiple objects using an array.
+
+- Each object in the array can store different data but belongs to the same class.
+
+**Example**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    int id;
+
+    void setData(int i) {
+        id = i;
+    }
+
+    void showData() {
+        cout << "ID = " << id << endl;
+    }
+};
+
+int main() {
+
+    Student s[3];   // array of objects
+
+    for(int i=0; i<3; i++) {
+        s[i].setData(i+1);
+    }
+
+    for(int i=0; i<3; i++) {
+        s[i].showData();
+    }
+
+    return 0;
+}
+```
+- Here, three objects of class Student are created using an array, and each object stores its own data.
+
+""",
+
+"Q17. Explain the Program Structure of C++.": """
+
+- A C++ program is organized into different sections to make the program easy to understand and manage.
+
+- The basic structure of a C++ program includes the following parts:
+
+**1. Documentation Section**
+
+- This section contains comments that describe the program.
+
+**Example:**
+```cpp
+
+// Program to display Hello
+
+```
+**2. Link Section**
+
+- This section includes header files required for the program.
+
+**Example:**
+
+```cpp
+#include <iostream>
+```
+**3. Definition Section**
+
+- This section defines symbolic constants or namespaces.
+
+**Example:**
+
+```cpp
+
+using namespace std;
+
+```
+**4. Global Declaration Section**
+
+- Global variables and function declarations are written here.
+
+**Example:**
+
+```cpp
+int x;
+
+```
+**5. Class Declaration Section**
+
+**In C++, a class is divided into two parts:**
+
+- Data Members → store data
+
+- Member Functions → perform operations on data
+
+- Member functions can be written in two ways:
+
+**Inside the class (Inline):**
+
+```cpp
+class Demo {
+public:
+    void show() {
+        cout << "Hello";
+    }
+};
+```
+**Outside the class using Scope Resolution Operator:**
+
+```cpp
+
+class Demo {
+public:
+    void show();
+};
+
+void Demo::show() {
+    cout << "Hello";
+}
+
+```
+**6. main() Function Section**
+
+- This is the starting point of the program.
+- Execution begins from here.
+
+**Example:**
+
+```cpp
+
+int main() {
+    Demo obj;
+    obj.show();
+    return 0;
+}
+
+```
+- Thus, a C++ program follows a structured format where classes contain data members and member functions defined either inside or outside the class.
 
 """
+
 }
 
 
@@ -1099,5 +1244,4 @@ with right:
         st.info("Click any question to view the answer.")
 st.markdown("---")
 st.markdown("<p style='text-align:center'><b>App Created by Dr. Priyang Bhatt</b></p>", unsafe_allow_html=True)
-
 
