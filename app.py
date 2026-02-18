@@ -732,8 +732,7 @@ int main(){
 ```
 **Constructor → Creates object**
 
-**Destructor → Destroys object**
-""",
+**Destructor → Destroys object** """,
 
 "Q9. Explain Static Data Members and Static Member Functions with example.": """
 
@@ -805,8 +804,7 @@ int main(){
 
 - Memory saving
 
-- Sharing data among objects
-""",
+- Sharing data among objects """,
 
 "Q10. Explain Dynamic Memory Allocation in C++ with example.": """
 Dynamic Memory Allocation means allocating memory during runtime instead of compile time.
@@ -1319,4 +1317,5 @@ with right:
 
 st.markdown("---")
 st.markdown("<p style='text-align:center'><b>App Created by Dr. Priyang Bhatt</b></p>", unsafe_allow_html=True)
+
 
